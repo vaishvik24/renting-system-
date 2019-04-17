@@ -79,6 +79,11 @@ MongoClient.connect('mongodb://localhost:27017/renting_system', function(err, db
             // Broadcasting to all the users except the one typing 
             socket.broadcast.in(data.room).emit('typing', {data: data, isTyping: true});
         });
+
+        socket.on('profileRealtime',()=>{
+            console.log("refreshing");
+            io.sockets.emit('profileRealtime');
+        });
         // **********************************
         socket.on('checkLogout',()=>{
             //console.log("checked");

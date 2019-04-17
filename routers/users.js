@@ -344,7 +344,7 @@ routers.post('/bookingReqProduct',(req,res)=>{
     // console.log(req.body);
     var MongoClient = require('mongodb').MongoClient;
     var url = "mongodb://127.0.0.1:27017/";
-
+    console.log(req.body);
     const time = new Date();
     var day = req.body.edate;
     var monthIndex = req.body.emonth;
@@ -353,6 +353,7 @@ routers.post('/bookingReqProduct',(req,res)=>{
     var ttt = new Date(tt); 
     var timeDiff = Math.abs(time.getTime() - ttt.getTime());
     var diffDays_ = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    console.log(diffDays_ + " days");
     MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db('renting_system');
@@ -372,9 +373,6 @@ routers.post('/bookingReqProduct',(req,res)=>{
         duration : diffDays_,
         Sts : false
     }
-    // console.log(myquery);
-    // console.log(addValue);
- 
     dbo.collection('reqProduct').update(myquery,{ $addToSet: {bookings: addValue}},(err,res_)=>{
         if(err){res.json({success:false , msg:'there is some problem in booking.'});
         console.log(err);        
