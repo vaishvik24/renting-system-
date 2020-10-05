@@ -23,7 +23,7 @@
     "multer-gridfs-storage": "^3.2.3",
     "node-cmd": "^3.0.0",
     "nodemon": "^1.18.9",
-    "npm": "^6.7.0",
+    "npm": "^6.14.6",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "path": "^0.12.7",
